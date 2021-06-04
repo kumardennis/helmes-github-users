@@ -1,0 +1,53 @@
+@import 'vars.scss';
+
+.auth-modal {
+  display: flex;
+  justify-content: center;
+
+  .auth-modal-toggle {
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: $link-color;
+      font-size: 25px;
+    }
+  }
+
+  .auth-unauthorize {
+    cursor: pointer;
+    color: $link-color;
+    font-size: 25px;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.auth-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 535px;
+  margin: 30vh auto;
+  position: relative;
+  outline: none;
+
+  input {
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 500px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px 10px lightgray;
+    background-color: white;
+  }
+
+  button {
+    font-size: $medium-small-text-size;
+    position: absolute;
+    padding: 0 1rem;
+  }
+}

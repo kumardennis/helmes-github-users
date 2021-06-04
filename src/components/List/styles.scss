@@ -1,0 +1,10 @@
+@import 'vars.scss';
+
+.list {
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+}

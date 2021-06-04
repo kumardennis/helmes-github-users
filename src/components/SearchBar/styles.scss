@@ -1,0 +1,41 @@
+@import 'vars.scss';
+
+.search-bar {
+  margin: 5rem auto 1rem auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+
+  .search-input {
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0 0 10px 10px lightgrey;
+    border: none;
+    border-radius: 3rem;
+    outline: none;
+    font-size: $medium-small-text-size;
+
+    @media (max-width: $small-screen-size) {
+      font-size: $small-text-size;
+      padding: 1rem;
+    }
+  }
+
+  .search-btn {
+    position: absolute;
+    width: 10%;
+
+    @media (max-width: $small-screen-size) {
+      width: 20%;
+    }
+  }
+}
+
+.recent-searches {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 2rem;
+}

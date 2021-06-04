@@ -1,0 +1,23 @@
+@import 'vars.scss';
+
+.view-switch {
+  margin-right: 10px;
+  margin-left: auto;
+  display: flex;
+  max-width: 50px;
+  justify-content: space-between;
+
+  div {
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: darken($color: $link-color, $amount: 30);
+    }
+  }
+
+  div.selected-view {
+    color: $link-color;
+    transform: scale(1.2);
+  }
+}

@@ -1,0 +1,47 @@
+@import 'vars.scss';
+
+h1 {
+  font-size: $h1-text-size;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  main {
+    max-width: $body-max-width;
+    width: 100%;
+    margin: 2rem auto;
+    position: relative;
+    min-height: calc(100vh - 30vh);
+    // overflow: clip;
+
+    @media (max-width: $small-screen-size) {
+      max-width: 90%;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $link-color;
+  }
+}
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 3rem 3rem 3rem 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $link-color;
+  color: white;
+  cursor: pointer;
+  transition-duration: 0.2s;
+
+  &:hover {
+    background-color: darken($color: $link-color, $amount: 40);
+  }
+}

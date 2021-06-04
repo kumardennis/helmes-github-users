@@ -1,0 +1,25 @@
+@import 'vars.scss';
+
+.user-orgs > div {
+  padding: 1rem;
+  box-shadow: 0 0 5px 5px lightgray;
+  border-radius: 1rem;
+  min-height: 190px;
+
+  @media (max-width: $small-screen-size) {
+    padding: 0;
+  }
+
+  div {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+
+    img {
+      height: 30px;
+      border-radius: 30px;
+      margin-right: 10px;
+    }
+  }
+}

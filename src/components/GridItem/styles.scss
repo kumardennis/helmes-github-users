@@ -1,0 +1,83 @@
+@import 'vars.scss';
+
+.grid-item {
+  min-width: 150px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  box-shadow: 0 0 5px 5px lightgray;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  min-height: 230px;
+  height: 240px;
+  flex-wrap: nowrap;
+  transition-duration: 0.2s;
+
+  @media (max-width: $medium-screen-size) {
+    // max-width: 100% !important;
+    padding: 1rem 3rem;
+    height: 200px;
+  }
+
+  @media (max-width: $small-screen-size) {
+    max-width: 100% !important;
+    padding: 0.25rem;
+    min-height: 100px;
+    width: 100px !important;
+    height: 150px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .avatar > img {
+      width: 130px;
+      border-radius: 130px;
+
+      @media (max-width: $small-screen-size) {
+        width: 70px;
+        border-radius: 70px;
+      }
+    }
+
+    .name-type {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        font-size: $medium-text-size;
+        @media (max-width: $small-screen-size) {
+          font-size: $small-text-size;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px 5px $link-color;
+  }
+
+  .repo-list {
+    margin: 2rem 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    h3 {
+      margin: 0 0 0 10px !important;
+    }
+
+    ul {
+      text-align: left;
+      word-break: break-word;
+      font-size: $small-text-size;
+    }
+
+    @media (max-width: $small-screen-size) {
+      display: none;
+    }
+  }
+}

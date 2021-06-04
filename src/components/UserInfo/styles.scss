@@ -1,0 +1,27 @@
+@import 'vars.scss';
+
+.user-info {
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+
+  .user-image {
+    width: 320px;
+    border-radius: 300px;
+    box-shadow: 0 0 10px 10px lightgray;
+    margin: 0 0 1rem 0;
+  }
+
+  .user-name-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $link-color;
+
+    a {
+      font-size: $large-text-size;
+    }
+  }
+}

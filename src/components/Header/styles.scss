@@ -1,0 +1,44 @@
+@import 'vars.scss';
+
+.header {
+  background-image: url('../../assets/images/banner.jpg');
+  background-position: 50% 40%;
+  background-size: 50% 50%;
+
+  color: white;
+
+  .header-overlay {
+    padding: 2rem 10rem;
+    height: 240px;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    h1 {
+      @media (max-width: $medium-screen-size) {
+        height: auto;
+        width: 100px;
+      }
+
+      @media (max-width: $small-screen-size) {
+        font-size: 30px;
+      }
+    }
+
+    h2 {
+      @media (max-width: $small-screen-size) {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: $medium-screen-size) {
+      height: auto;
+    }
+
+    @media (max-width: $small-screen-size) {
+      padding: 2rem 2rem;
+    }
+  }
+
+  @media (max-width: $medium-screen-size) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+@import 'vars.scss';
+
+.grid {
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+
+  @media (max-width: $medium-screen-size) {
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+  }
+}
