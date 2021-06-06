@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Header from 'components/Header/Header'
 import UserDetail from 'containers/UserDetail/UserDetail'
 import ReactNotification, { store } from 'react-notifications-component'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { view } from '@risingstack/react-easy-state'
 import HashLoader from 'react-spinners/ClipLoader'
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded'
-import { Link } from 'react-router-dom'
 import {
   getSpecificUser,
   getUserRepos,
@@ -17,7 +16,7 @@ import NoData from 'components/NoData/NoData'
 import Footer from 'components/Footer/Footer'
 
 const UserPage = () => {
-  let { id } = useParams()
+  const { id } = useParams()
 
   const [userInfo, setUserInfo] = useState({})
   const [userRepos, setUserRepos] = useState([])
@@ -55,8 +54,8 @@ const UserPage = () => {
           getUserOrgs(response.organizations_url),
         ])
 
-        let repos = []
-        let orgs = []
+        const repos = []
+        const orgs = []
 
         repoResponse.forEach((repo) => {
           repos.push({
@@ -66,23 +65,20 @@ const UserPage = () => {
           })
         })
 
-        for (let i = 0; i < orgResponse.length; i++) {
+        for (let i = 0; i < orgResponse.length; i += 1) {
           // Get html_url for each org
-          const specificOrgResponse = await getSpecificOrg(
-            await orgResponse[i].url,
-          )
+          const specificOrgResponse = getSpecificOrg(orgResponse[i].url)
 
-          const htmlUrl = await specificOrgResponse.html_url
+          const htmlUrl = specificOrgResponse.html_url
 
           orgs.push({
-            id: await orgResponse[i].id,
-            url: await htmlUrl,
-            name: await orgResponse[i].login,
-            avatarUrl: await orgResponse[i].avatar_url,
+            id: orgResponse[i].id,
+            url: htmlUrl,
+            name: orgResponse[i].login,
+            avatarUrl: orgResponse[i].avatar_url,
           })
         }
 
-        console.log('test')
         setUserRepos(repos)
         setUserOrgs(orgs)
         setIsLoading(false)
@@ -95,9 +91,9 @@ const UserPage = () => {
   return (
     <div className="page-container">
       <ReactNotification />
-      <Header animateHeader={true} />
+      <Header animateHeader />
       <main>
-        <Link to={'/'}>
+        <Link to="/">
           <ArrowBackRoundedIcon fontSize="large" />
         </Link>
         {isLoading ? (

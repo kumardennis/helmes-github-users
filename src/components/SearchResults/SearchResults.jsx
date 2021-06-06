@@ -8,24 +8,22 @@ import NoData from 'components/NoData/NoData'
 import AuthModal from 'components/AuthModal/AuthModal'
 import './styles.scss'
 
-const SearchResults = () => {
-  return (
-    <>
-      <div className="icons">
-        <AuthModal />
-        <ViewSwitch />
-      </div>
-      {appStore.listOfUsers.length > 0 ? (
-        appStore.currentView === 0 ? (
-          <Grid />
-        ) : (
-          <List />
-        )
+const SearchResults = () => (
+  <>
+    <div className="icons">
+      <AuthModal />
+      <ViewSwitch />
+    </div>
+    {appStore.listOfUsers.length > 0 ? (
+      appStore.currentView === 0 ? (
+        <Grid />
       ) : (
-        <NoData />
-      )}
-    </>
-  )
-}
+        <List />
+      )
+    ) : (
+      <NoData />
+    )}
+  </>
+)
 
 export default view(SearchResults)

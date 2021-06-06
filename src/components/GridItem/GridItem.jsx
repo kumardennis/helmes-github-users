@@ -1,37 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 import './styles.scss'
 
-const GridItem = ({ avatarUrl, name, repos, type }) => {
-  return (
-    <div className="grid-item">
-      <div>
-        <div className="avatar">
-          <img alt={name} src={avatarUrl} />
-        </div>
-        <div className="name-type">
-          <Link target="_blank" to={`/${name}`}>
-            {name}
-          </Link>
-          <small>{type}</small>
-        </div>
+const GridItem = ({ avatarUrl, name, repos, type }) => (
+  <div className="grid-item">
+    <div>
+      <div className="avatar">
+        <img alt={name} src={avatarUrl} />
       </div>
-      <div className="repo-list">
-        <h3>Repositories</h3>
-        <ul>
-          {repos.length > 0
-            ? repos.map((repo, key) => (
-                <li>
-                  <a target="_blank" href={repo.url}>
-                    {repo.name}
-                  </a>
-                </li>
-              ))
-            : 'No repos to display'}
-        </ul>
+      <div className="name-type">
+        <Link target="_blank" rel="noreferrer" to={`/${name}`}>
+          {name}
+        </Link>
+        <small>{type}</small>
       </div>
     </div>
-  )
+    <div className="repo-list">
+      <h3>Repositories</h3>
+      <ul>
+        {repos.length > 0
+          ? repos.map((repo, key) => (
+              <li>
+                <a target="_blank" rel="noreferrer" href={repo.url}>
+                  {repo.name}
+                </a>
+              </li>
+            ))
+          : 'No repos to display'}
+      </ul>
+    </div>
+  </div>
+)
+
+GridItem.propTypes = {
+  avatarUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  repos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 export default GridItem

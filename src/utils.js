@@ -25,7 +25,7 @@ export const getUsersFromQuery = async (searchQuery) => {
     } else {
       await response.items.forEach(async (item, key) => {
         const repoResponse = await getUserRepos(item.repos_url)
-        let reposForUser = []
+        const reposForUser = []
 
         if (repoResponse.length < 1) {
           store.addNotification({

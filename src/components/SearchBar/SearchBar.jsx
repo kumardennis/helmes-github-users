@@ -5,6 +5,7 @@ import SearchRoundedIcon from '@material-ui/icons/SearchRounded'
 import { view, autoEffect } from '@risingstack/react-easy-state'
 import './styles.scss'
 import Tag from 'components/Tag/Tag'
+import uuid from 'react-uuid'
 import appStore from 'store'
 
 const SearchBar = () => {
@@ -25,7 +26,8 @@ const SearchBar = () => {
   }
 
   const handleSearchClick = async (query) => {
-    let finalQuery = query !== undefined && query !== null ? query : searchQuery
+    const finalQuery =
+      query !== undefined && query !== null ? query : searchQuery
     await getUsersFromQuery(finalQuery)
 
     // Add to latest searches
@@ -49,11 +51,6 @@ const SearchBar = () => {
 
   autoEffect(() => {
     setSearchQuery(appStore.searchQuery)
-    console.log(appStore.searchQuery)
-  })
-
-  autoEffect(() => {
-    console.log(appStore.latestSearches)
   })
 
   return (
@@ -66,7 +63,11 @@ const SearchBar = () => {
           className="search-input"
           placeholder="Search Github User..."
         />
-        <button onClick={handleSearchClick} className="search-btn btn">
+        <button
+          type="submit"
+          onClick={handleSearchClick}
+          className="search-btn btn"
+        >
           <SearchRoundedIcon />
         </button>
       </div>
@@ -75,7 +76,7 @@ const SearchBar = () => {
         {appStore.latestSearches !== null &&
           appStore.latestSearches.length > 0 &&
           appStore.latestSearches.map((tag, key) => (
-            <Tag onClick={handleTagClick} key={key} label={tag} />
+            <Tag onClick={handleTagClick} key={uuid()} label={tag} />
           ))}
       </div>
     </>
