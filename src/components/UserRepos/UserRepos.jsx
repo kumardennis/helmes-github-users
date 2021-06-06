@@ -8,7 +8,7 @@ const UserRepos = ({ userRepos }) => (
     <h3>Repositories</h3>
     <div>
       {userRepos.length > 0
-        ? userRepos.map((repo, key) => (
+        ? userRepos.map((repo) => (
             <div>
               <ArrowRightIcon /> <a href={repo.url}>{repo.name}</a>
             </div>

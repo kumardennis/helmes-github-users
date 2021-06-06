@@ -7,7 +7,7 @@ const UserOrgs = ({ userOrgs }) => (
     <h3>Organizations</h3>
     <div>
       {userOrgs.length > 0
-        ? userOrgs.map((org, key) => (
+        ? userOrgs.map((org) => (
             <div>
               <img src={org.avatarUrl} alt={org.name} />{' '}
               <a href={org.url}>{org.name}</a>

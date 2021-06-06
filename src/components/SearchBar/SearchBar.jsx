@@ -75,7 +75,7 @@ const SearchBar = () => {
         Recent Searches:
         {appStore.latestSearches !== null &&
           appStore.latestSearches.length > 0 &&
-          appStore.latestSearches.map((tag, key) => (
+          appStore.latestSearches.map((tag) => (
             <Tag onClick={handleTagClick} key={uuid()} label={tag} />
           ))}
       </div>

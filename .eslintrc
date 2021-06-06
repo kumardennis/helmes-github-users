@@ -12,13 +12,14 @@
     "rules": {
         "curly":"off",
         "semi":"off",
-        "camelcase":"warn",
+        "camelcase":"off",
         "consistent-return":"off",
         "no-param-reassign":"off",
         "no-unused-vars":"warn",
         "object-curly-newline": "off",
         "indent":"off",
         "operator-linebreak":"off",
-        "no-nested-ternary":"off"
+        "no-nested-ternary":"off",
+        "no-console": "off"
     }
   }

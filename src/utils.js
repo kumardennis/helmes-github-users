@@ -23,7 +23,7 @@ export const getUsersFromQuery = async (searchQuery) => {
         },
       })
     } else {
-      await response.items.forEach(async (item, key) => {
+      await response.items.forEach(async (item) => {
         const repoResponse = await getUserRepos(item.repos_url)
         const reposForUser = []
 

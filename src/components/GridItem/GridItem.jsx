@@ -20,7 +20,7 @@ const GridItem = ({ avatarUrl, name, repos, type }) => (
       <h3>Repositories</h3>
       <ul>
         {repos.length > 0
-          ? repos.map((repo, key) => (
+          ? repos.map((repo) => (
               <li>
                 <a target="_blank" rel="noreferrer" href={repo.url}>
                   {repo.name}
