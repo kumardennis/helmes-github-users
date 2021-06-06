@@ -29,11 +29,14 @@ const UserPage = () => {
     const getUser = async () => {
       const response = await getSpecificUser(id)
 
-      if (response.message === 'Not Found') {
+      if (response.message !== undefined) {
         setUserFound(false)
         store.addNotification({
           title: 'Oops!',
-          message: 'User does not exists...',
+          message:
+            response.message === 'Not Found'
+              ? 'Sorry, user does not exist...'
+              : 'Could not fetch results, maybe try authenticating from homepage ?',
           type: 'danger',
           insert: 'top',
           container: 'top-right',
