@@ -41,6 +41,23 @@ export const getUsersFromQuery = async (searchQuery) => {
               onScreen: true,
             },
           })
+        } else if (
+          repoResponse.message !== undefined &&
+          repoResponse.message.includes('API rate limit exceeded')
+        ) {
+          store.addNotification({
+            title: 'Oops!',
+            message: 'Could not fetch results, maybe try authenticating ?',
+            type: 'danger',
+            insert: 'top',
+            container: 'top-right',
+            animationIn: ['animate__animated', 'animate__fadeIn'],
+            animationOut: ['animate__animated', 'animate__fadeOut'],
+            dismiss: {
+              duration: 5000,
+              onScreen: true,
+            },
+          })
         } else {
           await repoResponse.forEach(async (repo) => {
             reposForUser.push({
