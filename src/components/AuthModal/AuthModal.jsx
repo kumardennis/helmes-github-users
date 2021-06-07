@@ -5,14 +5,15 @@ import LockOpenIcon from '@material-ui/icons/LockOpen'
 import LockIcon from '@material-ui/icons/Lock'
 import appStore from 'store'
 import { view } from '@risingstack/react-easy-state'
-import { useCookies } from 'react-cookie'
+import { withCookies } from 'react-cookie'
+import { PropTypes } from 'prop-types'
 import './styles.scss'
 
-const AuthModal = () => {
+const AuthModal = ({ cookies }) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
 
-  const [cookies, setCookie, removeCookie] = useCookies(['tokenGH'])
+  console.log(cookies)
 
   const handleOpen = () => {
     setOpen(true)
@@ -28,7 +29,7 @@ const AuthModal = () => {
 
   const handleClick = () => {
     appStore.githubToken = value
-    setCookie('tokenGH', value, {
+    cookies.set('tokenGH', value, {
       maxAge: 3600,
       secure: true,
       sameSite: true,
@@ -38,7 +39,7 @@ const AuthModal = () => {
 
   const handleUnauthorize = () => {
     appStore.githubToken = ''
-    removeCookie('tokenGH')
+    cookies.remove('tokenGH')
   }
 
   const handleKeyPress = (event) => {
@@ -80,4 +81,8 @@ const AuthModal = () => {
   )
 }
 
-export default view(AuthModal)
+AuthModal.propTypes = {
+  cookies: PropTypes.objectOf(PropTypes.string).isRequired,
+}
+
+export default withCookies(view(AuthModal))
