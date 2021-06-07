@@ -14,7 +14,8 @@ export const getUsers = async (queryText) => {
     const response = await fetch(baseUrl, {
       method: 'GET',
       headers: {
-        authorization: `token ${appStore.githubToken}`,
+        authorization:
+          appStore.githubToken !== '' ? `token ${appStore.githubToken}` : '',
       },
     })
 
@@ -31,7 +32,8 @@ export const getUserRepos = async (baseUrl) => {
     const response = await fetch(`${baseUrl}?per_page=3`, {
       method: 'GET',
       headers: {
-        authorization: `token ${appStore.githubToken}`,
+        authorization:
+          appStore.githubToken !== '' ? `token ${appStore.githubToken}` : '',
       },
     })
 
@@ -48,7 +50,8 @@ export const getUserOrgs = async (baseUrl) => {
     const response = await fetch(`${baseUrl}?per_page=3`, {
       method: 'GET',
       headers: {
-        authorization: `token ${appStore.githubToken}`,
+        authorization:
+          appStore.githubToken !== '' ? `token ${appStore.githubToken}` : '',
       },
     })
 
@@ -65,7 +68,8 @@ export const getSpecificOrg = async (baseUrl) => {
     const response = await fetch(`${baseUrl}`, {
       method: 'GET',
       headers: {
-        authorization: `token ${appStore.githubToken}`,
+        authorization:
+          appStore.githubToken !== '' ? `token ${appStore.githubToken}` : '',
       },
     })
 
@@ -84,7 +88,8 @@ export const getSpecificUser = async (user) => {
     const response = await fetch(`${baseUrl}`, {
       method: 'GET',
       headers: {
-        authorization: `token ${appStore.githubToken}`,
+        authorization:
+          appStore.githubToken !== '' ? `token ${appStore.githubToken}` : '',
       },
     })
 
