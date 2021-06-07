@@ -7,6 +7,7 @@ import './styles.scss'
 import Tag from 'components/Tag/Tag'
 import uuid from 'react-uuid'
 import appStore from 'store'
+import { store } from 'react-notifications-component'
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -25,16 +26,46 @@ const SearchBar = () => {
     setSearchQuery(event.target.value)
   }
 
-  const handleSearchClick = async (query) => {
-    const finalQuery =
-      query !== undefined && query !== null ? query : searchQuery
-    await getUsersFromQuery(finalQuery)
+  const handleSearchClick = async () => {
+    try {
+      const finalQuery =
+        appStore.searchQuery !== undefined &&
+        appStore.searchQuery !== null &&
+        appStore.searchQuery !== ''
+          ? appStore.searchQuery
+          : searchQuery
 
-    // Add to latest searches
-    appStore.latestSearches =
-      appStore.latestSearches !== null ? appStore.latestSearches : []
-    appStore.latestSearches.unshift(finalQuery)
-    appStore.latestSearches = [...new Set(appStore.latestSearches)].slice(0, 3)
+      console.log('FINAL', finalQuery)
+
+      // Add to latest searches
+      appStore.latestSearches =
+        appStore.latestSearches !== null ? appStore.latestSearches : []
+      appStore.latestSearches.unshift(finalQuery)
+      appStore.latestSearches = [...new Set(appStore.latestSearches)].slice(
+        0,
+        3,
+      )
+      localStorage.setItem(
+        'latestSearches',
+        JSON.stringify([...new Set(appStore.latestSearches)].slice(0, 3)),
+      )
+
+      await getUsersFromQuery(finalQuery)
+    } catch (err) {
+      store.addNotification({
+        title: 'Oops!',
+        message: err.toString(),
+        type: 'danger',
+        insert: 'top',
+        container: 'top-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      })
+    }
   }
 
   const handleKeyPress = async (event) => {
@@ -46,7 +77,7 @@ const SearchBar = () => {
   const handleTagClick = async (event) => {
     appStore.searchQuery = event.currentTarget.innerText
 
-    await handleSearchClick(event.currentTarget.innerText)
+    await handleSearchClick()
   }
 
   autoEffect(() => {
@@ -57,6 +88,7 @@ const SearchBar = () => {
     <>
       <div className="search-bar">
         <input
+          autoFocus
           onKeyPress={handleKeyPress}
           value={searchQuery}
           onChange={handleSearchChange}

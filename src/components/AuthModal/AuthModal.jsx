@@ -28,7 +28,7 @@ const AuthModal = () => {
 
   const handleClick = () => {
     appStore.githubToken = value
-    setCookie(cookies.tokenGH, value, {
+    setCookie('tokenGH', value, {
       maxAge: 3600,
       secure: true,
       sameSite: true,
