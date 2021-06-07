@@ -63,6 +63,7 @@ const AuthModal = ({ cookies }) => {
       >
         <div className="auth-modal-content">
           <input
+            autoFocus
             onKeyPress={handleKeyPress}
             type="password"
             className="auth-input"
