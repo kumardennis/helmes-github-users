@@ -13,8 +13,6 @@ const AuthModal = ({ cookies }) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
 
-  console.log(cookies)
-
   const handleOpen = () => {
     setOpen(true)
   }
