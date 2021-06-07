@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Run app on local environment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`npm install`
+`npm start`
+
+## Run E2E tests
+
+Cypress requires the local server to be running. So if it is not running, run the cmd `npm run test:e2e`. This will start your local env, and start the cypress test runner.
+If it is already running, then run `npm run cy:run`.
 
 ## Available Scripts
 
