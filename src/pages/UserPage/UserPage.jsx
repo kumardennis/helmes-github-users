@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Header from 'components/Header/Header'
 import UserDetail from 'containers/UserDetail/UserDetail'
 import ReactNotification, { store } from 'react-notifications-component'
 import { useParams, Link } from 'react-router-dom'
-import { view } from '@risingstack/react-easy-state'
+import { view, autoEffect } from '@risingstack/react-easy-state'
 import HashLoader from 'react-spinners/ClipLoader'
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded'
 import {
@@ -24,7 +24,7 @@ const UserPage = () => {
   const [userFound, setUserFound] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
+  autoEffect(() => {
     setIsLoading(true)
     const getUser = async () => {
       const response = await getSpecificUser(id)
