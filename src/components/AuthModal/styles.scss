@@ -35,6 +35,10 @@
   position: relative;
   outline: none;
 
+  @media (max-width: $small-screen-size) {
+    width: 335px;
+  }
+
   input {
     padding: 1rem;
     border-radius: 2rem;
@@ -43,6 +47,9 @@
     outline: none;
     box-shadow: 0 0 10px 10px lightgray;
     background-color: white;
+    @media (max-width: $small-screen-size) {
+      width: 300px;
+    }
   }
 
   button {
